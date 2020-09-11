@@ -1,0 +1,33 @@
+.dialogItems{
+    margin: 20px;
+    
+   
+}
+.dialog{
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.item{
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+.messages{
+    margin: 20px;
+}
+
+
+.dialogMain{
+    display: grid;
+    grid-template-columns: 3fr 8fr 8fr;
+}
+
+.dialog img{
+    width: 40px;
+    display: inline-block;
+}
+
+.addMessage{
+    margin-top: 30px;
+}

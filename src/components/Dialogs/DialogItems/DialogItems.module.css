@@ -1,0 +1,17 @@
+
+.dialog{
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.item{
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.dialog img{
+    width: 40px;
+    display: inline-block;
+}
+
