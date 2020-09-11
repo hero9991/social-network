@@ -2,8 +2,6 @@ import React from 'react';
 import c from './Users.module.css';
 import userPhoto from '../../assets/img/avatar.jpg'
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-import { userAPI } from '../../api/api';
 
 let Users = (props) => {
     debugger
