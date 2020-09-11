@@ -18,12 +18,7 @@ class UsersContainer extends React.Component {
     render() {
         let { usersPage, pageCount, totalCount, page, toggleDisabled, disabledUsers, followUser, unfollowUser,} = this.props
         let usersProps = { usersPage, pageCount, totalCount, page, toggleDisabled, disabledUsers, followUser, unfollowUser,}
-        // follow={this.props.follow}
-        //         unfollow={this.props.unfollow}
-        //         usersPage={this.props.usersPage}
-        //         pageCount={this.props.pageCount}
-        //         totalCount={this.props.totalCount}
-        //         page={this.props.page}
+      
         return <>
             {this.props.isPreloaded ? <Preloader /> : null}
             <Users changePage={this.changePage} {...usersProps} />
