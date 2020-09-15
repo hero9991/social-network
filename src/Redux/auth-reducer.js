@@ -31,8 +31,10 @@ export const setAuthUser = (id, email, login) => ({
 export const getAuthUser = () => {
     return (dispatch) => {
         authAPI.getAuthUser().then(data => {
-            let {id, email, login} = data.data;
-            dispatch(setAuthUser(id, email, login));
+            if (data.resultCode === 0) {
+                let { id, email, login } = data.data;
+                dispatch(setAuthUser(id, email, login));
+            }
         });
     }
 }
