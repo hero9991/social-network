@@ -1,4 +1,4 @@
-import { authAPI } from "../api/api";
+import { authAPI } from '../api/api';
 
 const SET_USER = 'SET-USER';
 
@@ -26,7 +26,7 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUser = (id, email, login) => ({
     type: SET_USER,
     data: { id, email, login }
-});
+})
 
 export const getAuthUser = () => {
     return (dispatch) => {

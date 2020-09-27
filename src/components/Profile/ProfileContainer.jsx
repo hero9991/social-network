@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUser } from '../../Redux/profile-reducer';
+import { getUser, getStatus, setUserStatus } from '../../Redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { togglePreloader } from '../../Redux/users-reducer';
 import withRedirect from '../../hoc/withRedirect';
-
+import {compose} from 'redux'
 
 // class ProfileContainer extends React.Component { 
 //   componentDidMount() {
@@ -23,25 +23,31 @@ import withRedirect from '../../hoc/withRedirect';
 
 const ProfileContainer = (props) => {
   useEffect(() => {
-    let user = props.match.params.userId
+    let user = props.match.params.userId;
     if (!user && props.myId) user = props.myId;
     if (!props.myId) user = 2;
-    props.getUser(user)
-  }, [])
+    props.getStatus(user);
+    props.getUser(user);
+  }, [props.myId])
 
-  return  <Profile {...props} />
+  return  <Profile {...props} userId={props.match.params.userId}/>
 }
-
-const withRedirectProfile = withRedirect(ProfileContainer)
-
-const withUrlDataContainerComponent = withRouter(withRedirectProfile)
-
 
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   isPreloaded: state.profilePage.isPreloaded,
   myId: state.auth.id,
+  status: state.profilePage.status,
 })
 
-export default connect(mapStateToProps, { togglePreloader, getUser })(withUrlDataContainerComponent)
+export default compose(
+  connect(mapStateToProps, { togglePreloader, getUser, getStatus, setUserStatus,  }),
+  withRouter,
+  withRedirect,
+)(ProfileContainer)
+
+// const withRedirectProfile = withRedirect(ProfileContainer);
+// const withUrlDataContainerComponent = withRouter(withRedirectProfile);
+// export default connect(mapStateToProps, { togglePreloader, getUser })(withUrlDataContainerComponent);
+
 

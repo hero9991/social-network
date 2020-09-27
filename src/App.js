@@ -25,7 +25,6 @@ function App (props) {
         <Route path='/Music' render={() => <MusicContainer />} />
         <Route path='/Users' render={() => <UsersContainer />} />
         <Route path='/Login' render={() => <Login />} />
-
       </div>
     </div>
   );

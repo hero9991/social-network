@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Users from './Users';
 import Preloader from '../../Preloader/Preloader';
-const { connect } = require("react-redux");
-const { setUsers, changePage, setTotalCount, togglePreloader, toggleDisabled, getUsers, followUser, unfollowUser } = require("../../Redux/users-reducer");
+const { connect } = require('react-redux');
+const { setUsers, changePage, setTotalCount, togglePreloader, toggleDisabled, getUsers, followUser, unfollowUser } = require('../../Redux/users-reducer');
 
 
 // class UsersContainer extends React.Component {
@@ -27,14 +27,14 @@ const UsersContainer = (props) => {
 
     useEffect(() => {
         props.getUsers(props.page, props.pageCount);
-    }, [])
+    }, [props.page])
 
     const changePage = (page) => {
         props.changePage(page);
         props.getUsers(page, props.pageCount);
     }
 
-    const { usersPage, pageCount, totalCount, page, toggleDisabled, disabledUsers, followUser, unfollowUser, } = props
+    const { usersPage, pageCount, totalCount, page, toggleDisabled, disabledUsers, followUser, unfollowUser, } = props;
     const usersProps = { usersPage, pageCount, totalCount, page, toggleDisabled, disabledUsers, followUser, unfollowUser, }
 
     return <>
@@ -53,6 +53,7 @@ const mapStateToProps = (state) => {
         disabledUsers: state.usersPage.disabledUsers,
     }
 }
+
 export default connect(mapStateToProps,
     { setUsers, changePage, setTotalCount, togglePreloader, toggleDisabled, getUsers, followUser, unfollowUser, })
     (UsersContainer)

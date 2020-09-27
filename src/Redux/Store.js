@@ -1,6 +1,6 @@
-import profileReducer from "./profile-reducer"
-import dialogsReducer from "./dialogs-reducer"
-import musicReducer from "./music-reducer"
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+import musicReducer from './music-reducer';
 
 
 let store = {
@@ -43,10 +43,10 @@ let store = {
   callSubscriber() { },
 
   getState() {
-    return this._state
+    return this._state;
   },
   subscribe(observer) {
-    this.callSubscriber = observer
+    this.callSubscriber = observer;
   },
 
   dispatch(action) {

@@ -4,8 +4,7 @@ import userPhoto from '../../assets/img/avatar.jpg'
 import { NavLink } from 'react-router-dom';
 
 let Users = (props) => {
-    debugger
-    let pageArr = []
+    let pageArr = [];
     for (let i = 1; i <= Math.ceil(props.totalCount / props.pageCount); i++) {
         pageArr.push(i);
     }

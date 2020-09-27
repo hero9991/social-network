@@ -1,9 +1,10 @@
-import { userAPI } from "../api/api";
+import { userAPI, profileAPI } from '../api/api';
 
-const ADD_POST = 'ADD-POST'
-const TEXT_CHANGE = 'TEXT-CHANGE'
-const SET_PROFILE = 'SET-PROFILE'
+const ADD_POST = 'ADD-POST';
+const TEXT_CHANGE = 'TEXT-CHANGE';
+const SET_PROFILE = 'SET-PROFILE';
 const TOGGLE_PRELOADER = 'TOGGLE-PRELOADER';
+const SET_STATUS = 'SET-STATUS'
 
 let initialState = {
     postsData: [
@@ -15,6 +16,7 @@ let initialState = {
     newPostText: '',
     profile: null,
     isPreloaded: false,
+    status: '',
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -40,28 +42,35 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 isPreloaded: action.isPreoladed
             }
+        case SET_STATUS:
+            return{
+                ...state,
+                status: action.status,
+            }
         default:
             return state;
     }
 }
 
 export const addPostActionCreator = () => ({
-    type: ADD_POST
+    type: ADD_POST,
 })
 export const textChangeActionCreator = (text) => ({
     type: TEXT_CHANGE,
-    text: text,
+    text,
 })
 export const setProfile = (profile) => ({
     type: SET_PROFILE,
-    profile: profile,
+    profile,
+})
+export const setStatus = (status) => ({
+    type: SET_STATUS,
+    status,
 })
 export const togglePreloader = (isPreoladed) => ({
     type: TOGGLE_PRELOADER,
     isPreoladed,
 });
-
-
 
 
 export const getUser = (user) => {
@@ -75,7 +84,28 @@ export const getUser = (user) => {
     }
 }
 
+export const getStatus = (id) => {
+    return (dispatch) => {
+        profileAPI.getStatus(id)
+            .then(data => {
+                dispatch(setStatus(data))
+            });
+    }
+}
 
-export default profileReducer
+export const setUserStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.setStatus(status)
+            .then(data => {
+                debugger
+                if (data.resultCode === 0) {
+                    dispatch(setStatus(status));
+                } 
+            })
+    }
+}
+
+
+export default profileReducer;
 
 

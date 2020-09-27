@@ -14,12 +14,11 @@ import { getAuthUser } from '../../Redux/auth-reducer';
 //     }
 // }
 
-
-
 const HeaderContainer = (props) => {
     useEffect (() => {
         props.getAuthUser();
-    }, [])
+    }, [props.getAuthUser()])
+
     return <Header {...props} />;
 }
 

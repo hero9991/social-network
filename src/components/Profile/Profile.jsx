@@ -6,11 +6,13 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 let Profile = (props) => {
-  
+
   return (
     <div className={c.main}>
       <ProfileHeader />
-      <ProfileInfo profile={props.profile} isPreloaded={props.isPreloaded}/>
+      <ProfileInfo profile={props.profile} status={props.status}
+        isPreloaded={props.isPreloaded} setUserStatus={props.setUserStatus} 
+        userId={props.userId} myId={props.myId}/>
       <MyPostsContainer />
     </div >
   );

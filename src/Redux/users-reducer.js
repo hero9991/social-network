@@ -20,7 +20,6 @@ let initialState = {
 
 //reducers
 const usersReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case FOLLOW:
             return {
@@ -118,9 +117,9 @@ export const followUser = (id) => {
     return (dispatch) => {
         dispatch(toggleDisabled(true, id));
         userAPI.followUser(id).then(data => {
-            dispatch(toggleDisabled(false, id))
+            dispatch(toggleDisabled(false, id));
             if (data.resultCode === 0) {
-                dispatch(follow(id))
+                dispatch(follow(id));
             }
         })
     }
@@ -130,9 +129,9 @@ export const unfollowUser = (id) => {
     return (dispatch) => {
         dispatch(toggleDisabled(true, id));
         userAPI.unfollowUser(id).then(data => {
-            dispatch(toggleDisabled(false, id))
+            dispatch(toggleDisabled(false, id));
             if (data.resultCode === 0) {
-                dispatch(unfollow(id))
+                dispatch(unfollow(id));
             }
         })
     }
